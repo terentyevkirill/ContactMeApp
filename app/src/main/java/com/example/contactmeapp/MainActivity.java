@@ -28,13 +28,26 @@ public class MainActivity extends AppCompatActivity {
 
         ImageView smsImage = findViewById(R.id.sms_button);
         smsImage.setOnClickListener(v -> {
-//            sendSms();
+            sendSms();
         });
 
         ImageView emailImage = findViewById(R.id.email_button);
         emailImage.setOnClickListener(v -> {
             sendEmail();
         });
+
+        ImageView telegram = findViewById(R.id.telegram_button);
+        telegram.setOnClickListener(v -> {
+            sendTelegram();
+        });
+    }
+
+    private void sendSms() {
+        Intent i = new Intent(android.content.Intent.ACTION_VIEW);
+        i.setType("vnd.android-dir/mms-sms");
+        i.putExtra("address","+380509658065");
+        i.putExtra("sms_body","Hello Kirill!");
+        startActivity(i);
     }
 
     private void makeCall() {
@@ -48,11 +61,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void sendEmail() {
-        Intent i = new Intent(Intent.ACTION_SEND);
-        i.setType("text/hmtl");
-        i.putExtra(Intent.EXTRA_EMAIL, "kirillterentyev1999@gmail.com");
+        Intent i = new Intent(Intent.ACTION_SENDTO);
+        i.setData(Uri.parse("mailto:kirillterentyev1999@gmail.com")); // only email apps should handle this
+//        i.putExtra(Intent.EXTRA_EMAIL, "kirillterentyev1999@gmail.com");
         i.putExtra(Intent.EXTRA_SUBJECT, "Subject");
-        i.putExtra(Intent.EXTRA_TEXT, "Hello, Kirill!");
+        i.putExtra(Intent.EXTRA_TEXT, "Hello Kirill!");
+
         if (validateIntent(i)) {
             startActivity(i);
         } else {
@@ -60,8 +74,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void telegram() {
-//        Intent i = new Intent(Intent.)
+    private void sendTelegram() {
+        final String app = "org.telegram.messenger";
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setPackage(app);
+        i.setData(Uri.parse("http://telegram.me/terentyev_k"));
+        if (validateIntent(i)) {
+            startActivity(i);
+        } else {
+            Toast.makeText(this, "Невозможно выполнить действие!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private Boolean validateIntent(Intent i) {
