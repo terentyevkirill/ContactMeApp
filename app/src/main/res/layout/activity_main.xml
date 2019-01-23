@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
+            <ImageButton
+                android:id="@+id/call_button"
+                android:layout_width="@android:dimen/notification_large_icon_width"
+                android:layout_height="@android:dimen/notification_large_icon_height"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/dialer"
+                tools:layout_editor_absoluteX="43dp"
+                tools:layout_editor_absoluteY="54dp" />
+
+            <ImageButton
+                android:id="@+id/sms_button"
+                android:layout_width="@android:dimen/notification_large_icon_width"
+                android:layout_height="@android:dimen/notification_large_icon_height"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/sms" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp">
+
+            <ImageButton
+                android:id="@+id/email_button"
+                android:layout_width="@android:dimen/notification_large_icon_width"
+                android:layout_height="@android:dimen/notification_large_icon_height"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/email"
+                tools:layout_editor_absoluteX="43dp"
+                tools:layout_editor_absoluteY="54dp" />
+
+            <ImageButton
+                android:id="@+id/telegram_button"
+                android:layout_width="@android:dimen/notification_large_icon_width"
+                android:layout_height="@android:dimen/notification_large_icon_height"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/telegram" />
+
+        </TableRow>
+
+    </TableLayout>
+
+</android.support.constraint.ConstraintLayout>
